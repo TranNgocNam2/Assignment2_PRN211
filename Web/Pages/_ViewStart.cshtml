@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "_Layout";
+}
+@{
+    //Get session
+    var isAuthenticated = !string.IsNullOrEmpty(Context.Session.GetString("Username"));
+    if (!isAuthenticated && !Context.Request.Path.StartsWithSegments("/"))
+    {
+        Context.Response.Redirect("/");
+    } 
+}
